@@ -8,7 +8,7 @@ Welcome to today's EKS assignment, to view the assignment, navigate to EKS assig
 ***Requirements:*** 
 - [x]Screenshot of completed assignment.
 - [x]Topology of what was builded.
-- [x]EXTRA!! Now deploy your own python application with a load balancer.
+- [x]EXTRA!! Now deploy your own Python application with a load balancer.
 
 👉Link to assignment instructions: [here]()  
 
