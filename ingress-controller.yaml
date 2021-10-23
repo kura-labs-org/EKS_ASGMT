@@ -9,11 +9,11 @@ metadata:
 spec:
   rules:
     - http:
-      paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: nginx-service-nodeport
-              port:
-                number: 80
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx-service-nodeport
+                port:
+                  number: 80
