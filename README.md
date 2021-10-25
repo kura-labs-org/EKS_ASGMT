@@ -1,9 +1,9 @@
 <h1 align=center>EKS assignment</h1>   
 
 ## Requirements:
-- [x]Screenshot of completed assignment.
-- [x]Topology of what was builded.
-- [x]EXTRA!! Now deploy your own Python application with a load balancer.
+- [Screenshot](https://github.com/ibrahima1289/EKS_ASGMT/blob/main/images/EKS-Assign9.PNG) of completed assignment.
+- Topology of what was builded.
+- **EXTRA!!!** Now deploy your own Python application with a load balancer.
 
 👉Link to assignment instructions: [here](https://github.com/kura-labs-org/EKS_ASGMT/blob/main/EKS%20assignment.pdf)  
 
