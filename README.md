@@ -14,7 +14,15 @@ The commands are for **Windows users**. If you are using **Mac** or **Linux** en
 ### Task 1: 
 
 1. Create your cluster.
-  
+
+```
+> kubectl cluster create {cluster_name}
+```
+
+Verification: 
+
+![](images/EKS-Assign1.PNG)
+
 2. Create a Ngnix deployment yaml file with a service. In this case, the file is named [Nginx.yaml](https://github.com/ibrahima1289/EKS_ASGMT/blob/main/Nginx.yaml).
 
 3. Create another yaml file for the ingress controller named [Nginx-Ingress.yaml](https://github.com/ibrahima1289/EKS_ASGMT/blob/main/Nginx-Ingress.yaml)
@@ -28,17 +36,22 @@ The commands are for **Windows users**. If you are using **Mac** or **Linux** en
 --query "cluster.identity.oidc.issuer" --output text
 ```
 
+![](images/EKS-Assign2.PNG)
+
+
 2. Enter the command below to see the OpenID connect.
 
 ```
 > aws iam list-open-id-connect-providers
 ```
+![](images/EKS-Assign4.PNG)
 
 3. Add an OpenID connect to the cluster.
 
 ```
 > eksctl utils associate-iam-oidc-provider --cluster {cluster_name} --approve
 ```
+![](images/EKS-Assign3.PNG)
 
 ### Task 3
 
@@ -48,6 +61,7 @@ The commands are for **Windows users**. If you are using **Mac** or **Linux** en
 > curl -o rbac-role.yaml ^ 
 https://raw.githubusercontent.com/RobinNagpal/kubernetes-tutorials/master/06_tools/007_alb_ingress/01_eks/rbac-role.yaml 
 ```
+![](images/EKS-Assign5.PNG)
 
 2. Apply the downloaded file by using the command below.
 
@@ -66,28 +80,28 @@ https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v
 
 ```
 > aws iam create-policy ^
-		--policy-name AWSLoadBalancerControllerIAMPolicy ^
-		--policy-document file://iam_policy.json
+--policy-name AWSLoadBalancerControllerIAMPolicy ^
+--policy-document file://iam_policy.json
 ```
 
 5. Create the service account: 
 
 ```
 > eksctl create iamserviceaccount ^
-	  --cluster=my-cluster03 ^
-	  --namespace=kube-system ^
-	  --name=aws-load-balancer-controller ^
-	  --attach-policy-arn=arn:aws:iam::{your_aws_account_ID}:policy/AWSLoadBalancerControllerIAMPolicy ^
-	  --override-existing-serviceaccounts ^
-	  --approve
+--cluster=my-cluster03 ^
+--namespace=kube-system ^
+--name=aws-load-balancer-controller ^
+--attach-policy-arn=arn:aws:iam::{your_aws_account_ID}:policy/AWSLoadBalancerControllerIAMPolicy ^
+--override-existing-serviceaccounts ^
+--approve
 ``` 
 	
 6.  Create certificate manager for the ingress controller:
 
 ```
 > kubectl apply ^
-		--validate=false ^
-		-f https://github.com/jetstack/cert-manager/releases/download/v1.5.4/cert-manager.yaml
+--validate=false ^
+-f https://github.com/jetstack/cert-manager/releases/download/v1.5.4/cert-manager.yaml
 ```
 
 ### Task 4
@@ -100,35 +114,41 @@ https://github.com/kubernetes-sigs/aws-load-balancer-controller/releases/downloa
 ```
 
 2. Edit the file that was downloaded `v2_3_0_full.yaml`.<br> 
-		(replace {cluster-name=your-cluster-name} with your cluster name )
+(replace {cluster-name=your-cluster-name} with your cluster name )
 
 3. Now, enter the following command below to run the `yaml` file:
 
 ```
 > kubectl apply -f v2_3_0_full.yaml
 ```
+![](images/EKS-Assign6.PNG)
 
 4. Use this command to view the controller: 
 
 ```
 > kubectl get deployment -n kube-system aws-load-balancer-controller
 ```
+![](images/EKS-Assign7.PNG)
 
 
-Task 5 : 
+### Task 5 : 
 
 1. Create your application in EKS by creating the deployment and service yaml file. Also the ingress yaml file. 
 
 	* For the **Nginx** App, run:
 	```
-  > kubectl apply -f Nginx.yaml
+  	> kubectl apply -f Nginx.yaml
 	```
+	![](images/EKS-Assign8.PNG)
+	
 	* For the **Service**, run:
 	```
 	> kubectl apply -f Nginx-Ingress.yaml
 	```
 
-2. Test out your application by checking the ALB url 
+2. Test out your application by checking the ALB url.
+
+![](images/EKS-Assign9.PNG)
 
 3. Clean up, run:
 ```
