@@ -13,11 +13,11 @@ The commands are for **Windows users**. If you are using **Mac** or **Linux** en
 
 ### Task 1: 
 
-	1. Create your cluster.
+1. Create your cluster.
   
-  2. Create a Ngnix deployment yaml file with a service. In this case, the file is named [Nginx.yaml](https://github.com/ibrahima1289/EKS_ASGMT/blob/main/Nginx.yaml).
+2. Create a Ngnix deployment yaml file with a service. In this case, the file is named [Nginx.yaml](https://github.com/ibrahima1289/EKS_ASGMT/blob/main/Nginx.yaml).
 
-	3. Create another yaml file for the ingress controller named [Nginx-Ingress.yaml](https://github.com/ibrahima1289/EKS_ASGMT/blob/main/Nginx-Ingress.yaml)
+3. Create another yaml file for the ingress controller named [Nginx-Ingress.yaml](https://github.com/ibrahima1289/EKS_ASGMT/blob/main/Nginx-Ingress.yaml)
 
 ### Task 2
 
