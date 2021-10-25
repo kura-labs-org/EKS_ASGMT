@@ -139,9 +139,10 @@ Make sure the clusters, VPCs, Load Balancers, EC2s, etc. are deleted on **AWS*.
 
 	
 
-Sources:
-	1. https://kubernetes.io/docs/concepts/services-networking/ingress/
-	2. https://aws.amazon.com/blogs/opensource/kubernetes-ingress-aws-alb-ingress-controller/
+## Sources:
+
+1. https://kubernetes.io/docs/concepts/services-networking/ingress/
+2. https://aws.amazon.com/blogs/opensource/kubernetes-ingress-aws-alb-ingress-controller/
 
 
 
