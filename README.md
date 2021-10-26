@@ -2,10 +2,14 @@
 
 ## Requirements:
 - [Screenshot](https://github.com/ibrahima1289/EKS_ASGMT/blob/main/images/EKS-Assign9.PNG) of completed assignment.
-- Topology of what was builded.
+- [Topology](https://github.com/ibrahima1289/EKS_ASGMT/blob/main/eks-topology.PNG) of what was builded.
 - **EXTRA!!!** Now deploy your own Python application with a load balancer.
 
 👉Link to assignment instructions: [here](https://github.com/kura-labs-org/EKS_ASGMT/blob/main/EKS%20assignment.pdf)  
+
+## Physical Topology
+
+![](eks-topology.PNG)
 
 ## Precedure:
 
