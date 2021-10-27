@@ -21,10 +21,10 @@ The goal of this exercise is to follow directions to create a kubernetes nginx s
 <h2>Instructions</h2>
 
 We set up two yaml files:
-```First Yaml File -Build two replica nodes that will hold the nginx services and expose port 80 on the front
+---First Yaml File -Build two replica nodes that will hold the nginx services and expose port 80 on the front
 
-Second Yaml file -Utilize a nodePort service to connect the nodes to the open world to the a random internal port that is open on each node. Usually this is in the 3xxxx
-```
+---Second Yaml file -Utilize a nodePort service to connect the nodes to the open world to the a random internal port that is open on each node. Usually this is in the 3xxxx
+
 <h4>Cluster formation</h4>
 
 First, we must create a new cluster. That can be achieved through ekctl cluster create --name "name"
