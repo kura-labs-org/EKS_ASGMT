@@ -20,7 +20,10 @@ The goal of this exercise is to follow directions to create a kubernetes nginx s
 
 <h2>Instructions</h2>
 
+All the Instructions are in the pdf, so, the button instructions here will briefly explain what is going on instead.
+
 We set up two yaml files:
+
 ---First Yaml File -Build two replica nodes that will hold the nginx services and expose port 80 on the front
 
 ---Second Yaml file -Utilize a nodePort service to connect the nodes to the open world to the a random internal port that is open on each node. Usually this is in the 3xxxx
