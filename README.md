@@ -126,4 +126,17 @@ Run the command:
 kubectl get deployment -n kube-system aws-load-balancer-controller
 ```
 
+Run the command:
+```
+kubectl apply -f nginx-ingr.yaml
+```
 
+Run the command:
+```
+kubectl apply -f nginx2.yaml
+```
+
+Run the command:
+```
+kubectl get ingress.networking.k8s.io
+```
