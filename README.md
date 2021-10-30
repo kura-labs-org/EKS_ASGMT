@@ -16,13 +16,12 @@ NGINX is a web server or a computer program that holds many files to start up a 
 
 Since NGINX is open-source and supports many functions for a website to function, it is a recommended software to use for deploying web applications. To deploy many web applications at once, NGINX can also be integrated with Kubernetes. Kubernetes is responsible for making many pods that holds many containers and each container is customized from an image and holds the files. To deploy those files on the web, there must be port mapping to ensure the files are read from the Kubernetes clusters and NGINX can be used for this purpose. <br>
 
-To integrate Kubernetes with NGINX, a Kubernetes cluster must be made first. 
+To integrate Kubernetes with NGINX, a Kubernetes cluster must be made first. To make a kubernetes cluster, use the following command: 
 
 ```
-To make a kubernetes cluster, use the following command: 
-eksctl cluster create --name ----
+eksctl cluster create --name '----'
 ```
-* ---- is the name assigned to the cluster. In this demonstration the cluster was named mycluster04. <br>
+* ---- is the name assigned to the cluster. In this demonstration the cluster was named mycluster04. In this documentation, 'name' will be referring to the name of the cluster you named. <br>
 
 <html>
      <h1>
@@ -52,9 +51,79 @@ aws eks describe-cluster --name ---- --query "cluster.identity.oidc.issuer"
      </h1>
 </html> 
 
+Run the command:
+```
+aws eks describe-cluster --name m ---- --query "cluster.identity.oidc.issuer" --output text
+```
 
+<html>
+     <h1>
+        <img style="float: center;" src=pictures/5.png width="1000" />
+     </h1>
+</html> 
 
+Run the command:
+```
+eksctl utils associate-iam-oidc-provider --cluster ---- --approve
+```
 
+Run the command:
+```
+aws iam list-open-id-connect-providers
+```
 
+Run the commands:
+```
+curl -o rbac-role.yaml https://raw.githubusercontent.com/RobinNagpal/kubernetes-tutorials/master/06_tools/007_alb_ingress/01_eks/rbac-role.yaml
+
+curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.3.0/docs/install/iam_policy.json
+```
+
+Run the command:
+```
+kubectl apply -f rbac-role.yaml
+```
+
+Run the command:
+```
+kubectl get serviceaccount
+```
+
+Run the command:
+```
+aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-document file://iam_policy.json
+```
+
+Run the command:
+```
+eksctl create iamserviceacount --cluster='name'  
+```
+
+Run the command:
+```
+eksctl create iamservice --cluster='name' namespace=kube-system --name=aws-load-balancer-controller --attach-policy-arn=arn:aws:iam::'amazonaccountnumber':policy/AWSLoadBalancerControllerIAMPolicy --override-existing-serviceaccounts --approve
+```
+
+Run the command:
+```
+kubectl apply \ --validate kubectl apply \
+    --validate=false \
+    -f https://github.com/jetstack/cert-manager/releases/download/v1.5.4/cert-manager.yaml
+```
+
+Run the command:
+```
+curl -o v2_3_0_full.yaml https://github.com/kubernetes-sigs/aws-load-balancer-controller/releases/download/v2.3.0/v2_3_0_full.yaml
+```
+
+Run the command:
+```
+kubectl apply -f v2_3_0_full.yaml
+```
+
+Run the command:
+```
+kubectl get deployment -n kube-system aws-load-balancer-controller
+```
 
 
