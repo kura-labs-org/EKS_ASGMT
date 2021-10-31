@@ -121,6 +121,12 @@ Run the command:
 aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-document file://iam_policy.json
 ```
 
+<html>
+     <h1>
+          <img style = "float:center;" src=pictures/10.png width="1000" />
+     </h1>
+</html>
+
 Run the command:
 ```
 eksctl create iamserviceacount --cluster='name'  
