@@ -219,3 +219,10 @@ kubectl get ingress.networking.k8s.io
           <img style = "float:center;" src=pictures/20.png width="1000" />
      </h1>
 </html>
+
+Type in the address url in a web browser provided from "kubectl get ingress.networking.k8s.io":
+<html>
+     <h1>
+          <img style = "float:center;" src=pictures/21.png width="1000" />
+     </h1>
+</html>
