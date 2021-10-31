@@ -16,7 +16,7 @@ NGINX is a web server or a computer program that holds many files to start up a 
 
 Since NGINX is open-source and supports many functions for a website to function, it is a recommended software to use for deploying web applications. To deploy many web applications at once, NGINX can also be integrated with Kubernetes. Kubernetes is responsible for making many pods that holds many containers and each container is customized from an image and holds the files. To deploy those files on the web, there must be port mapping to ensure the files are read from the Kubernetes clusters and NGINX can be used for this purpose. <br>
 
-To integrate Kubernetes with NGINX, a Kubernetes cluster must be made first. To make a kubernetes cluster, use the following command: 
+1. To integrate Kubernetes with NGINX, a Kubernetes cluster must be made first. To make a kubernetes cluster, use the following command: 
 
 ```
 eksctl cluster create --name '----'
@@ -30,7 +30,7 @@ eksctl cluster create --name '----'
      </h1>
 </html> 
 
-To ensure the cluster is running, type the following command:
+2. To ensure the cluster is running, type the following command:
 ```
 eksctl get cluster
 ```
@@ -41,7 +41,7 @@ eksctl get cluster
      </h1>
 </html> 
 
-Run the command:
+3. Run the command:
 ```
 aws eks describe-cluster --name ---- --query "cluster.identity.oidc.issuer --output text"
 ```
@@ -52,7 +52,7 @@ aws eks describe-cluster --name ---- --query "cluster.identity.oidc.issuer --out
      </h1>
 </html> 
 
-Run the command:
+4. Run the command:
 ```
 aws eks describe-cluster --name m ---- --query "cluster.identity.oidc.issuer" --output text
 ```
@@ -63,7 +63,7 @@ aws eks describe-cluster --name m ---- --query "cluster.identity.oidc.issuer" --
      </h1>
 </html> 
 
-Run the command:
+5. Run the command:
 ```
 eksctl utils associate-iam-oidc-provider --cluster ---- --approve
 ```
@@ -74,7 +74,7 @@ eksctl utils associate-iam-oidc-provider --cluster ---- --approve
      </h1>
 </html>
 
-Run the command:
+6. Run the command:
 ```
 aws iam list-open-id-connect-providers
 ```
@@ -86,7 +86,7 @@ aws iam list-open-id-connect-providers
      </h1>
 </html>
 
-Run the commands:
+7. Run the commands:
 ```
 curl -o rbac-role.yaml https://raw.githubusercontent.com/RobinNagpal/kubernetes-tutorials/master/06_tools/007_alb_ingress/01_eks/rbac-role.yaml
 
@@ -100,12 +100,12 @@ curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-lo
      </h1>
 </html>
 
-Run the command:
+8. Run the command:
 ```
 kubectl apply -f rbac-role.yaml
 ```
                                                                                                  
-To confirm it was created, run the command:
+9. To confirm it was created, run the command:
 ```
 kubectl get serviceaccount
 ```
@@ -116,7 +116,7 @@ kubectl get serviceaccount
      </h1>
 </html>
 
-Run the command:
+10. Run the command:
 ```
 aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-document file://iam_policy.json
 ```
@@ -127,12 +127,12 @@ aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-
      </h1>
 </html>
 
-Run the command:
+11. Run the command:
 ```
 eksctl create iamserviceacount --cluster='name'  
 ```
 
-Run the command:
+12. Run the command:
 ```
 eksctl create iamservice --cluster='name' namespace=kube-system --name=aws-load-balancer-controller --attach-policy-arn=arn:aws:iam::'amazonaccountnumber':policy/AWSLoadBalancerControllerIAMPolicy --override-existing-serviceaccounts --approve
 ```
@@ -143,7 +143,7 @@ eksctl create iamservice --cluster='name' namespace=kube-system --name=aws-load-
      </h1>
 </html>
 
-Run the command:
+13. Run the command:
 ```
 kubectl apply \ --validate kubectl apply \
     --validate=false \
@@ -157,7 +157,7 @@ kubectl apply \ --validate kubectl apply \
      </h1>
 </html>
 
-Run the command:
+14. Run the command:
 ```
 curl -o v2_3_0_full.yaml https://github.com/kubernetes-sigs/aws-load-balancer-controller/releases/download/v2.3.0/v2_3_0_full.yaml
 ```
@@ -169,7 +169,7 @@ curl -o v2_3_0_full.yaml https://github.com/kubernetes-sigs/aws-load-balancer-co
      </h1>
 </html>
 
-Run the command:
+15. Run the command:
 ```
 kubectl apply -f v2_3_0_full.yaml
 ```
@@ -180,7 +180,7 @@ kubectl apply -f v2_3_0_full.yaml
      </h1>
 </html>
 
-Run the command:
+16. Run the command:
 ```
 kubectl get deployment -n kube-system aws-load-balancer-controller
 ```
@@ -192,12 +192,12 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
      </h1>
 </html>
 
-Run the command:
+17. Run the command:
 ```
 kubectl apply -f 'name'.yaml
 ```
 
-Run the command:
+18. Run the command:
 ```
 kubectl apply -f 'name'.yaml
 ```
@@ -208,7 +208,7 @@ kubectl apply -f 'name'.yaml
      </h1>
 </html>
 
-Run the command:
+19. Run the command:
 ```
 kubectl get ingress.networking.k8s.io
 ```
@@ -220,7 +220,7 @@ kubectl get ingress.networking.k8s.io
      </h1>
 </html>
 
-Type in the address url in a web browser provided from "kubectl get ingress.networking.k8s.io" command:
+20. Type in the address url in a web browser provided from "kubectl get ingress.networking.k8s.io" command:
 <html>
      <h1>
           <img style = "float:center;" src=pictures/21.png width="1000" />
