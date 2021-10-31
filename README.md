@@ -1,5 +1,9 @@
 <h1 align=center>EKS assignment</h1>   
 
+## About
+
+This assignment is about deploying an **Nginx** application using **AWS EKS**.
+
 ## Requirements:
 - [Screenshot](https://github.com/ibrahima1289/EKS_ASGMT/blob/main/images/EKS-Assign9.PNG) of completed assignment.
 - [Topology](https://github.com/ibrahima1289/EKS_ASGMT/blob/main/eks-topology.PNG) of what was builded.
