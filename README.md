@@ -70,7 +70,7 @@ eksctl utils associate-iam-oidc-provider --cluster ---- --approve
 
 <html>
      <h1>
-          <img style = "float:center;" src=pictures/6.png width="1000 />
+          <img style = "float:center;" src=pictures/6.png width="1000" />
      </h1>
 </html>
 
@@ -82,7 +82,7 @@ aws iam list-open-id-connect-providers
                                                                  
 <html>
      <h1>
-          <img style = "float:center;" src=pictures/7.png width="1000 />
+          <img style = "float:center;" src=pictures/7.png width="1000" />
      </h1>
 </html>
 
@@ -96,7 +96,7 @@ curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-lo
 
 <html>
      <h1>
-          <img style = "float:center;" src=pictures/8.png width="1000 />
+          <img style = "float:center;" src=pictures/8.png width="1000" />
      </h1>
 </html>
 
@@ -108,7 +108,7 @@ kubectl apply -f rbac-role.yaml
                                                                  
 <html>
      <h1>
-          <img style = "float:center;" src=pictures/9.png width="1000 />
+          <img style = "float:center;" src=pictures/9.png width="1000" />
      </h1>
 </html>
 
@@ -134,7 +134,7 @@ eksctl create iamservice --cluster='name' namespace=kube-system --name=aws-load-
 
 <html>
      <h1>
-          <img style = "float:center;" src=pictures/12.png width="1000 />
+          <img style = "float:center;" src=pictures/12.png width="1000" />
      </h1>
 </html>
 
@@ -148,7 +148,7 @@ kubectl apply \ --validate kubectl apply \
                                                                   
 <html>
      <h1>
-          <img style = "float:center;" src=pictures/13.png width="1000 />
+          <img style = "float:center;" src=pictures/13.png width="1000" />
      </h1>
 </html>
 
@@ -160,7 +160,7 @@ curl -o v2_3_0_full.yaml https://github.com/kubernetes-sigs/aws-load-balancer-co
 
 <html>
      <h1>
-          <img style = "float:center;" src=pictures/14.png width="1000 />
+          <img style = "float:center;" src=pictures/14.png width="1000" />
      </h1>
 </html>
 
@@ -171,7 +171,7 @@ kubectl apply -f v2_3_0_full.yaml
                                                                                                                              
 <html>
      <h1>
-          <img style = "float:center;" src=pictures/15.png width="1000 />
+          <img style = "float:center;" src=pictures/15.png width="1000" />
      </h1>
 </html>
 
@@ -183,7 +183,7 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
                                                                   
 <html>
      <h1>
-          <img style = "float:center;" src=pictures/16.png width="1000 />
+          <img style = "float:center;" src=pictures/16.png width="1000" />
      </h1>
 </html>
 
@@ -199,7 +199,7 @@ kubectl apply -f 'name'.yaml
                                                                                                                                     
 <html>
      <h1>
-          <img style = "float:center;" src=pictures/18.png width="1000 />
+          <img style = "float:center;" src=pictures/18.png width="1000" />
      </h1>
 </html>
 
@@ -211,6 +211,6 @@ kubectl get ingress.networking.k8s.io
 
 <html>
      <h1>
-          <img style = "float:center;" src=pictures/20.png width="1000 />
+          <img style = "float:center;" src=pictures/20.png width="1000" />
      </h1>
 </html>
