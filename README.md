@@ -42,7 +42,7 @@ eksctl get cluster
 
 Run the command:
 ```
-aws eks describe-cluster --name ---- --query "cluster.identity.oidc.issuer"
+aws eks describe-cluster --name ---- --query "cluster.identity.oidc.issuer --output text"
 ```
 
 <html>
@@ -67,10 +67,23 @@ Run the command:
 eksctl utils associate-iam-oidc-provider --cluster ---- --approve
 ```
 
+<html>
+     <h1>
+          <img style = "float:center;" src=pictures/6.png width="1000 />
+     </h1>
+</html>
+
 Run the command:
 ```
 aws iam list-open-id-connect-providers
 ```
+                                                                 
+                                                                 
+<html>
+     <h1>
+          <img style = "float:center;" src=pictures/7.png width="1000 />
+     </h1>
+</html>
 
 Run the commands:
 ```
@@ -79,10 +92,24 @@ curl -o rbac-role.yaml https://raw.githubusercontent.com/RobinNagpal/kubernetes-
 curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.3.0/docs/install/iam_policy.json
 ```
 
+
+<html>
+     <h1>
+          <img style = "float:center;" src=pictures/8.png width="1000 />
+     </h1>
+</html>
+
 Run the command:
 ```
 kubectl apply -f rbac-role.yaml
 ```
+                                                                 
+                                                                 
+<html>
+     <h1>
+          <img style = "float:center;" src=pictures/9.png width="1000 />
+     </h1>
+</html>
 
 Run the command:
 ```
@@ -104,39 +131,85 @@ Run the command:
 eksctl create iamservice --cluster='name' namespace=kube-system --name=aws-load-balancer-controller --attach-policy-arn=arn:aws:iam::'amazonaccountnumber':policy/AWSLoadBalancerControllerIAMPolicy --override-existing-serviceaccounts --approve
 ```
 
+<html>
+     <h1>
+          <img style = "float:center;" src=pictures/12.png width="1000 />
+     </h1>
+</html>
+
 Run the command:
 ```
 kubectl apply \ --validate kubectl apply \
     --validate=false \
     -f https://github.com/jetstack/cert-manager/releases/download/v1.5.4/cert-manager.yaml
 ```
+                                                                  
+                                                                  
+<html>
+     <h1>
+          <img style = "float:center;" src=pictures/13.png width="1000 />
+     </h1>
+</html>
 
 Run the command:
 ```
 curl -o v2_3_0_full.yaml https://github.com/kubernetes-sigs/aws-load-balancer-controller/releases/download/v2.3.0/v2_3_0_full.yaml
 ```
+                                                                  
+
+<html>
+     <h1>
+          <img style = "float:center;" src=pictures/14.png width="1000 />
+     </h1>
+</html>
 
 Run the command:
 ```
 kubectl apply -f v2_3_0_full.yaml
 ```
+                                                                                                                             
+<html>
+     <h1>
+          <img style = "float:center;" src=pictures/15.png width="1000 />
+     </h1>
+</html>
 
 Run the command:
 ```
 kubectl get deployment -n kube-system aws-load-balancer-controller
 ```
+                                                                  
+                                                                  
+<html>
+     <h1>
+          <img style = "float:center;" src=pictures/16.png width="1000 />
+     </h1>
+</html>
 
 Run the command:
 ```
-kubectl apply -f nginx-ingr.yaml
+kubectl apply -f 'name'.yaml
 ```
 
 Run the command:
 ```
-kubectl apply -f nginx2.yaml
+kubectl apply -f 'name'.yaml
 ```
+                                                                                                                                    
+<html>
+     <h1>
+          <img style = "float:center;" src=pictures/18.png width="1000 />
+     </h1>
+</html>
 
 Run the command:
 ```
 kubectl get ingress.networking.k8s.io
 ```
+                                                                  
+
+<html>
+     <h1>
+          <img style = "float:center;" src=pictures/20.png width="1000 />
+     </h1>
+</html>
