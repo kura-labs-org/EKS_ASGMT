@@ -21,6 +21,7 @@ To integrate Kubernetes with NGINX, a Kubernetes cluster must be made first. To 
 ```
 eksctl cluster create --name '----'
 ```
+
 * ---- is the name assigned to the cluster. In this demonstration the cluster was named mycluster04. In this documentation, 'name' will be referring to the name of the cluster you named. <br>
 
 <html>
