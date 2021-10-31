@@ -104,18 +104,17 @@ Run the command:
 ```
 kubectl apply -f rbac-role.yaml
 ```
-                                                                 
-                                                                 
+                                                                                                 
+To confirm it was created, run the command:
+```
+kubectl get serviceaccount
+```
+
 <html>
      <h1>
           <img style = "float:center;" src=pictures/9.png width="1000" />
      </h1>
 </html>
-
-Run the command:
-```
-kubectl get serviceaccount
-```
 
 Run the command:
 ```
