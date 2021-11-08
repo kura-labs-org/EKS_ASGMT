@@ -1,20 +1,20 @@
 import nats from 'node-nats-streaming';
+import { StoreCreatedPublisher } from './events/store-created-publisher';
 
 const stan = nats.connect('store', 'abc', {
     url: 'http:localhost:4222'
 });
 
-stan.on('connect', () => {
+stan.on('connect', async () => {
     console.log('Publisher connected to NATS')
 
-    const data = JSON.stringify({
-        id: '12423',
-        chef: true,
-        name: 'Jespson Saint-Pierre'
-    })
-
-    stan.publish('store:created', data, () =>{
-        console.log('Even published')
-    })
+    const publisher = new StoreCreatedPublisher(stan);
+    try{
+        await publisher.publish({
+            //define the store
+        })
+    } catch (err) {
+        console.log(err);
+    }
 })
 

@@ -1,4 +1,6 @@
 import nats, { Message, Stan } from 'node-nats-streaming';
+import { UserCreatedListener } from './events/user-created-listener'
+import { ChefCreatedListener } from './events/chef-created-listener'
 
 console.clear();
 
@@ -23,24 +25,4 @@ stan.on('connect', () =>{
 process.on('SIGINT', () => stan.close());
 process.on('SIGTERM', () => stan.close());
 
-class UserCreatedListener extends Listener {
-    subject = 'user:created';
-    queueGroupName = 'payments-service';
-
-    onMessage(data: any, msg: Message) {
-        console.log('event created', data);
-
-        msg.ack();
-    }
-}
-class ChefCreatedListener extends Listener{
-    subject = 'chef:created';
-    queueGroupName = 'payments-service';
-
-    onMessage(data: any, msg: Message) {
-        console.log('Even Created', data);
-
-        msg.ack();
-    }
-}
 
