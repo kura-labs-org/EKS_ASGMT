@@ -221,7 +221,7 @@ Run 'kubectl apply -f 'name'.yaml' command twice in order to make two different 
                                                                                                                                     
 <html>
      <h1>
-          <img style = "float:center;" src=pictures/18.png width="1000" />
+          <img style = "float:center;" src=pictures/17.png width="1000" />
      </h1>
 </html>
 
