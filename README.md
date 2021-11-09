@@ -34,6 +34,7 @@ eksctl cluster create --name '----'
 ```
 eksctl get cluster
 ```
+Once again, this command shows if the cluster was created and is currently running. 
 
 <html>
      <h1>
@@ -45,6 +46,7 @@ eksctl get cluster
 ```
 aws eks describe-cluster --name ---- --query "cluster.identity.oidc.issuer --output text"
 ```
+This command shows the url specified from an AWS account. Providing the url is important because future AWS commands to create clusters will show up on the AWS GUI with account that had the same url. 
 
 <html>
      <h1>
@@ -68,6 +70,8 @@ aws eks describe-cluster --name m ---- --query "cluster.identity.oidc.issuer" --
 eksctl utils associate-iam-oidc-provider --cluster ---- --approve
 ```
 
+This command creates the cluster on the specified AWS account. If you received an error, run the AWS config command and make sure you provide a access key, secret access key, and the correct availability zone. 
+
 <html>
      <h1>
           <img style = "float:center;" src=pictures/6.png width="1000" />
@@ -78,7 +82,7 @@ eksctl utils associate-iam-oidc-provider --cluster ---- --approve
 ```
 aws iam list-open-id-connect-providers
 ```
-                                                                 
+Connect-providers should show your AWS account number, the url provided, and other Amazon Resource Names (ARN) that defines the AWS account resources.                                                                
                                                                  
 <html>
      <h1>
@@ -93,6 +97,7 @@ curl -o rbac-role.yaml https://raw.githubusercontent.com/RobinNagpal/kubernetes-
 curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.3.0/docs/install/iam_policy.json
 ```
 
+Running the two commands above, we are retrieving two files, a yaml file and a jspn file from two different Github accounts. The yaml and json files are named rbac-role.yaml and iam_policy.json respectively. The yaml file will be reponsible to make a Kubernetes cluster and the json file provides permissions and restrictions to using some AWS services. 
 
 <html>
      <h1>
@@ -104,6 +109,8 @@ curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-lo
 ```
 kubectl apply -f rbac-role.yaml
 ```
+
+Running the apply command with rbac-role.yaml runs the lines of code in rbac-role.yaml where it specifies to how traffic goes to and from the cluster and specifying other service permissions. 
                                                                                                  
 9. To confirm it was created, run the command:
 ```
@@ -120,6 +127,7 @@ kubectl get serviceaccount
 ```
 aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-document file://iam_policy.json
 ```
+By using the iam_policy.json file, specifies permissions for many AWS services in order to run NGINX on a Kubernetes cluster.
 
 <html>
      <h1>
@@ -131,11 +139,14 @@ aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-
 ```
 eksctl create iamserviceacount --cluster='name'  
 ```
+This enables you as the IAM user for the cluster you created. You can further assign or take away permissions or give authority to others. 
+* 'name' is the name of your cluster. In this demonstration, my cluster's name is cluster04. 
 
 12. Run the command:
 ```
 eksctl create iamservice --cluster='name' namespace=kube-system --name=aws-load-balancer-controller --attach-policy-arn=arn:aws:iam::'amazonaccountnumber':policy/AWSLoadBalancerControllerIAMPolicy --override-existing-serviceaccounts --approve
 ```
+The command above will offically link the cluster and grant it IAM User access to assign service permissions. The changes can be seen on AWS Cloudformation. 
 
 <html>
      <h1>
@@ -149,7 +160,8 @@ kubectl apply \ --validate kubectl apply \
     --validate=false \
     -f https://github.com/jetstack/cert-manager/releases/download/v1.5.4/cert-manager.yaml
 ```
-                                                                  
+The following command creates many legal certificates for every ingress controllers and the cluster. 
+
                                                                   
 <html>
      <h1>
@@ -161,7 +173,7 @@ kubectl apply \ --validate kubectl apply \
 ```
 curl -o v2_3_0_full.yaml https://github.com/kubernetes-sigs/aws-load-balancer-controller/releases/download/v2.3.0/v2_3_0_full.yaml
 ```
-                                                                  
+Another file v2.3.0_full.yaml is needed from the Github repo shown above to specify the load balancer rules and ports for the Kubernetes nodes, pods, and containers.                                                                    
 
 <html>
      <h1>
@@ -173,7 +185,8 @@ curl -o v2_3_0_full.yaml https://github.com/kubernetes-sigs/aws-load-balancer-co
 ```
 kubectl apply -f v2_3_0_full.yaml
 ```
-                                                                                                                             
+Webhooks to connect all the Kubernetes are generated in order to make them communicate efficently with one another. 
+
 <html>
      <h1>
           <img style = "float:center;" src=pictures/15.png width="1000" />
@@ -184,7 +197,7 @@ kubectl apply -f v2_3_0_full.yaml
 ```
 kubectl get deployment -n kube-system aws-load-balancer-controller
 ```
-                                                                  
+This shows confirmation the Kubernetes Deployment has a load balancer attached to it.                                                                  
                                                                   
 <html>
      <h1>
@@ -197,10 +210,7 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 kubectl apply -f 'name'.yaml
 ```
 
-18. Run the command:
-```
-kubectl apply -f 'name'.yaml
-```
+
                                                                                                                                     
 <html>
      <h1>
