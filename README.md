@@ -140,7 +140,7 @@ By using the iam_policy.json file, specifies permissions for many AWS services i
 eksctl create iamserviceacount --cluster='name'  
 ```
 This enables you as the IAM user for the cluster you created. You can further assign or take away permissions or give authority to others. 
-* 'name' is the name of your cluster. In this demonstration, my cluster's name is cluster04. 
+'name' is the name of your cluster. In this demonstration, my cluster's name is cluster04. 
 
 12. Run the command:
 ```
@@ -215,7 +215,7 @@ kubectl apply -f 'name'.yaml
 ```
 
 Run 'kubectl apply -f 'name'.yaml' command twice in order to make two different yaml files. One yaml file is to create the deployment and nginx service port. The other yaml file is needed to create ingress traffic. 
-* 'name' = Specify the names of the two yaml files
+'name' = Specify the names of the two yaml files
 
 
                                                                                                                                     
