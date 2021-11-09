@@ -185,7 +185,7 @@ Another file v2.3.0_full.yaml is needed from the Github repo shown above to spec
 ```
 kubectl apply -f v2_3_0_full.yaml
 ```
-Webhooks to connect all the Kubernetes are generated in order to make them communicate efficently with one another. 
+Webhooks are created in order to connect all the Kubernetes components to make them communicate efficently with one another. 
 
 <html>
      <h1>
@@ -205,10 +205,17 @@ This shows confirmation the Kubernetes Deployment has a load balancer attached t
      </h1>
 </html>
 
-17. Run the command:
+17. Run the commands:
 ```
 kubectl apply -f 'name'.yaml
 ```
+
+```
+kubectl apply -f 'name'.yaml
+```
+
+Run 'kubectl apply -f 'name'.yaml' command twice in order to make two different yaml files. One yaml file is to create the deployment and nginx service port. The other yaml file is needed to create ingress traffic. 
+* 'name' = Specify the names of the two yaml files
 
 
                                                                                                                                     
@@ -218,11 +225,12 @@ kubectl apply -f 'name'.yaml
      </h1>
 </html>
 
-19. Run the command:
+18. Run the command:
 ```
 kubectl get ingress.networking.k8s.io
 ```
-                                                                  
+
+This shows the url where the Nginx application is running. 
 
 <html>
      <h1>
@@ -230,7 +238,7 @@ kubectl get ingress.networking.k8s.io
      </h1>
 </html>
 
-20. Type in the address url in a web browser provided from "kubectl get ingress.networking.k8s.io" command:
+19. Type in the address url in a web browser provided from "kubectl get ingress.networking.k8s.io" command:
 <html>
      <h1>
           <img style = "float:center;" src=pictures/21.png width="1000" />
