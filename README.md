@@ -238,7 +238,7 @@ This shows the url where the Nginx application is running.
      </h1>
 </html>
 
-19. Type in the address url in a web browser provided from "kubectl get ingress.networking.k8s.io" command:
+19. Type in the address url in a web browser provided from "kubectl get ingress.networking.k8s.io" command. If successful, Nginx should incorporated with your application. 
 <html>
      <h1>
           <img style = "float:center;" src=pictures/21.png width="1000" />
