@@ -3,12 +3,12 @@ require('./db/config/index');
 
 import express from 'express';
 import { json } from 'body-parser';
-const storeRouter = require('./routes/storeRoutes')
+const userRouter = require('./routes/userRoutes')
 
 const app = express();
 app.use(json());
 
-app.use(storeRouter);
+app.use(userRouter);
 
 app.listen(3000, () => {
     console.log('listening on port 3k')
