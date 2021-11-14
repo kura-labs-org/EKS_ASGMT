@@ -1,6 +1,6 @@
 const router = require('express').Router(),
-    { currentUser } = require('../middlewares/current-user'),
-    { requireAuth } = require('../middlewares/auth-req'),
+    { currentUser } = require('@chefapp/common'),
+    { requireAuth } = require('@chefapp/common'),
     { currentUserController, registerUser, loginUser, logoutUser, updateUser, deleteUser } = require('../controller/userController');
 
 //create user

@@ -1,11 +1,11 @@
 import express, { Request, Response } from 'express';
-import { validateRequest } from '../middlewares/validate-request';
-import { BadRequestError } from '../errors/bad-request';
-const User = require('../db/model/user'),
-{ body, validationResult } = require('express-validator'),
-{ DatabaseConnectionError } = require('../errors/db-conn-error'),
-{ RequestValidationError } = require('../errors/requestValidator'),
-  jwt = require('jsonwebtoken');
+import { validateRequest } from '@chefapp/common';
+import { BadRequestError } from '@chefapp/common';
+const User = require('../db/model/user');
+const { body, validationResult } = require('express-validator');
+const { DatabaseConnectionError } = require('@chefapp/common');
+const { RequestValidationError } = require('@chefapp/common');
+const jwt = require('jsonwebtoken');
 
 exports.registerUser = [
     body("email").isEmail().withMessage("Email must be valid"),
