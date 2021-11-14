@@ -7,7 +7,7 @@
 
 Topology Below!<br>
 
-![image](https://github.com/KennethT404/EKS_ASGMT/blob/main/EKS%20Assignment%20Topology.png)
+![image](https://github.com/KennethT404/EKS_ASGMT/blob/main/EKS%20Topology.png)
 
 The goal of this deployment was to successfully host an application with a kubernetes pod. 
 
