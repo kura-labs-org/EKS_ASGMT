@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 // An interface that describes the properties
