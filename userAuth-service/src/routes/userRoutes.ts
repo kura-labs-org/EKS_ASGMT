@@ -1,10 +1,11 @@
 const router = require('express').Router(),
     { currentUser } = require('@chefapp/common'),
     { requireAuth } = require('@chefapp/common'),
-    { currentUserController, registerUser, loginUser, logoutUser, updateUser, deleteUser } = require('../controller/userController');
+    { currentUserController, registerUser, registerChefs, loginUser, logoutUser, updateUser, deleteUser } = require('../controller/userController');
 
 //create user
 router.post('api/users/register', registerUser);
+router.post('api/users/chefs/register', registerChefs);
 //login user
 router.post('api/users/login', loginUser);
 

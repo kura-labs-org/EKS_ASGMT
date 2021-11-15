@@ -14,13 +14,7 @@ spec:
     spec:
       containers:
       - name: user-service
-        image: jespstpierre/chefapp-userauth-service
-        env: 
-          - name: JWT_KEY
-            valueFrom:
-              secretKeyRef:
-                name: jwt-secret
-                key: JWT_KEY
+        image: jespstpierre/chefappuserauth
 
 
 ---

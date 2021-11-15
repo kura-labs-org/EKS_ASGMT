@@ -1,12 +1,13 @@
 import mongoose from 'mongoose';
+import { geocoder } from '../../middleware/index';
 // An interface that describes the properties
 // that are requried to create a new User
 interface StoreAttrs {
     chefName: string;
     bio: string;
     careerHighlights: string;
-    address: string;
-    location: string;
+    address: string | undefined;
+    location: object;
     operatingHours: string;
     website: string;
 }
@@ -21,8 +22,8 @@ interface StoreDoc extends mongoose.Document {
     chefName: string;
     bio: string;
     careerHighlights: string;
-    address: string;
-    location: string;
+    address: string | undefined;
+    location: object;
     operatingHours: string;
     website: string;
 }
@@ -68,7 +69,7 @@ const storeSchema = new mongoose.Schema({
 });
 
 storeSchema.pre<StoreDoc>('save', async function (next) {
-    const geoloc = await geocoder.geocode(this.address);
+    const geoloc = await geocoder.geocode(this.address!);
     this.location = {
       type: 'Point',
       coordinates: [geoloc[0].longitude, geoloc[0].latitude],

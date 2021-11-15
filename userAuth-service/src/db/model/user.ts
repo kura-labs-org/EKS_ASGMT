@@ -121,7 +121,7 @@ userSchema.methods.toJSON = function () {
  userSchema.methods.generateAuthToken = async function () {
     const user = this;
     const token = jwt.sign(
-      { _id: user._id.toString(), name: user.name },
+      { _id: user._id , email: user.email, role: user.roles },
       process.env.JWT_SECRET
     );
     return token;
@@ -157,8 +157,7 @@ userSchema.methods.toJSON = function () {
       user.password = await bcrypt.hash(user.password, 8);
   
     next();
-  });
-  
+});
 
 userSchema.statics.build = (attrs: UserAttrs) => {
     return new User(attrs);
