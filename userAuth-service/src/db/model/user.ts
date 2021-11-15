@@ -6,8 +6,7 @@ const jwt = require('jsonwebtoken');
 // that are requried to create a new User
 interface UserAttrs {
     roles: string;
-    firstName: string;
-    lastName: string;
+    fullName: string;
     email: string;
     password: string;
     phoneNumber: string;
@@ -27,8 +26,7 @@ interface UserModel extends mongoose.Model<UserDoc> {
 
 interface UserDoc extends mongoose.Document {
     roles: string;
-    firstName: string;
-    lastName: string;
+    fullName: String;
     email: string;
     password: string;
     phoneNumber: string;
@@ -48,12 +46,7 @@ const userSchema = new mongoose.Schema({
         }],
         default: ['user']
     },
-    firstName: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    lastName: {
+    fullName: {
         type: String,
         required: true,
         trim: true
@@ -121,8 +114,8 @@ userSchema.methods.toJSON = function () {
  userSchema.methods.generateAuthToken = async function () {
     const user = this;
     const token = jwt.sign(
-      { _id: user._id , email: user.email, role: user.roles },
-      process.env.JWT_SECRET
+      { _id: user._id , fullname: user.fullName, email: user.email, role: user.roles },
+      process.env.JWT_KEY
     );
     return token;
   };

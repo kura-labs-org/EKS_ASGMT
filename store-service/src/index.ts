@@ -6,7 +6,7 @@ import 'express-async-errors';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 const userRouter = require('./routes/userRoutes')
-const { errorhandler } = require('@chefapp/common')
+const { errorHandler } = require('@chefapp/common')
 const { NotFoundError } = require('@chefapp/common')
 
 
@@ -26,7 +26,7 @@ app.all('*', async (req, res) => {
     throw new NotFoundError();
   });
 
-app.use(errorhandler);
+app.use(errorHandler);
 
 app.listen(3000, () => {
     console.log('listening on port 3k')

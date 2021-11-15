@@ -3,7 +3,8 @@ import { geocoder } from '../../middleware/index';
 // An interface that describes the properties
 // that are requried to create a new User
 interface StoreAttrs {
-    chefName: string;
+    StoreName: string;
+    userId: string;
     bio: string;
     careerHighlights: string;
     address: string | undefined;
@@ -19,7 +20,8 @@ interface StoreModel extends mongoose.Model<StoreDoc> {
 }
 
 interface StoreDoc extends mongoose.Document {
-    chefName: string;
+    StoreName: string;
+    userId: string;
     bio: string;
     careerHighlights: string;
     address: string | undefined;
@@ -29,10 +31,14 @@ interface StoreDoc extends mongoose.Document {
 }
   
 const storeSchema = new mongoose.Schema({
-    chefName: {
+    StoreName: {
         type: String,
         required: true
-      },
+    },
+    userId: {
+        type: String,
+        required: true,
+    },
     bio: {
         type: String,
         required: true,

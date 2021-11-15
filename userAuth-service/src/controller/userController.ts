@@ -15,14 +15,15 @@ exports.registerUser = [
       .withMessage("Password must be between 4 and 20 characters"),
   ], async (req: Request, res: Response) => {
 
-    const { email, password } = req.body; 
+    const { fullName, email, password, phoneNumber, street, city, state, zip, dateOfBirth } = req.body;
+
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
       throw new BadRequestError('Already have an account');
     }
 
-    const user = User.build({ email, password, roles: "user"});
+    const user = User.build({ fullName, email, password, phoneNumber, street, city, state, zip, dateOfBirth, roles: "user"});
     await user.save();
 
     // Generate JWT
@@ -44,14 +45,14 @@ exports.registerChefs = [
       .withMessage("Password must be between 4 and 20 characters"),
   ], async (req: Request, res: Response) => {
 
-    const { email, password } = req.body; 
+    const { fullName, email, password, phoneNumber, street, city, state, zip, dateOfBirth, } = req.body; 
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
       throw new BadRequestError('Already have an account');
     }
 
-    const user = User.build({ email, password, roles: "chef"});
+    const user = User.build({ fullName, email, password, phoneNumber, street, city, state, zip, dateOfBirth, roles: "chef"});
     await user.save();
 
     // Generate JWT

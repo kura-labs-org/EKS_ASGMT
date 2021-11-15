@@ -4,21 +4,21 @@ const router = require('express').Router(),
     { currentUserController, registerUser, registerChefs, loginUser, logoutUser, updateUser, deleteUser } = require('../controller/userController');
 
 //create user
-router.post('api/users/register', registerUser);
-router.post('api/users/chefs/register', registerChefs);
+router.post('/', registerUser);
+router.post('/chefs', registerChefs);
 //login user
-router.post('api/users/login', loginUser);
+router.post('/login', loginUser);
 
 //get current user
-router.get('api/users/me', currentUser, requireAuth, currentUserController);
+router.get('/me', currentUser, requireAuth, currentUserController);
 
 //updateuser
-router.put('api/users/me', updateUser);
+//router.put('api/users/me', updateUser);
 
 //logout user
-router.get('api/users/logout', logoutUser);
+//router.get('api/users/logout', logoutUser);
 
 //delete user
-router.delete('api/users/delete', deleteUser);
+//router.delete('api/users/delete', deleteUser);
 
-module.exports = router;
+export = router;

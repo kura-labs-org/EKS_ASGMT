@@ -1,17 +1,22 @@
 const router = require('express').Router(),
-    { getCurrentStore, getAllStores, createStore, updateStore, deleteStore } = require('../controller/storeController');
+    { getStore, getMyStore, getAllStores, createStore, getStoreByZip, searchStores, updateStore } = require('../controller/storeController'),
+    { requireAuth, currentUser } = require('@chefapp/common');
 
 //create user
-router.post('api/users/register', createStore);
-//login user
-router.get('api/users/login', getCurrentStore);
-router.get('api/users/login', getAllStores);
+router.post('api/stores', requireAuth, currentUser, createStore);
+
+//different ways to get the stores
+router.get('api/stores/mystore', requireAuth, currentUser, getMyStore);
+router.get('api/stores/:id', requireAuth, getStore);
+router.get('api/stores/radius/:zipcode/:distance/', requireAuth, getStoreByZip);
+router.get('api/stores/search', requireAuth, searchStores);
+router.get('api/stores', requireAuth, getAllStores);
 
 //get current user
-router.put('api/users/me', updateStore);
+router.put('api/stores/mystore', requireAuth, currentUser, updateStore);
 
 //logout user
-router.delete('api/users/logout', deleteStore);
+//router.delete('api/users/logout', deleteStore);
 
 
-module.exports = router;
+export = router;
