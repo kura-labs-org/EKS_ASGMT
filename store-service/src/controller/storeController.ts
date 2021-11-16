@@ -3,6 +3,9 @@ const Store = require('../db/model/store');
 const querystring = require('querystring');;
 import { geocoder } from '../middleware/index';
 import { NotFoundError } from '@chefapp/common';
+import { StoreCreatedPublisher } from '../events/publishers/store-created-publisher';
+import { StoreUpdatedPublisher } from '../events/publishers/store-updated-publisher';
+import { natsWrapper } from '../nats-wrapper';
 
 
 
@@ -86,9 +89,42 @@ exports.createStore  = async (req: Request, res: Response) => {
       userId: req.currentUser!.id,
   });
   await store.save();
+  await new StoreCreatedPublisher(natsWrapper.client).publish({
+    id: store.id,
+    userId: store.userId,
+    StoreName: store.StoreName,
+    bio: store.bio,
+    careerHighlights: store.careerHighlights,
+    address: store.address,
+    location: store.location,
+    operatingHours: store.operatingHours,
+    website: store.website
+  });
 
   res.status(201).send(store);
 };
 
 exports.updateStore = async (req: Request, res: Response) => {
+  const store = Store.findByIdAndUpdate({
+    ...req.body,
+    _id: req.params.id
+  });
+
+  if (!store) {
+    throw new NotFoundError();
+  }
+
+  await new StoreUpdatedPublisher(natsWrapper.client).publish({
+    id: store.id,
+    userId: store.userId,
+    StoreName: store.StoreName,
+    bio: store.bio,
+    careerHighlights: store.careerHighlights,
+    address: store.address,
+    location: store.location,
+    operatingHours: store.operatingHours,
+    website: store.website
+  });
+
+  res.send(store)
 };

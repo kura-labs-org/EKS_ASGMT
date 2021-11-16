@@ -16,5 +16,5 @@ export * from './middlewares/validate-request';
 export * from './events/base-listener';
 export * from './events/base-publisher';
 export * from './events/subjects';
-export * from './events/store-created';
-export * from './events/store-updated';
+export * from './events/meal-created';
+export * from './events/meal-updated';

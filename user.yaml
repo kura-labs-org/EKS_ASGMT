@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+spec:
+  selector:
+    matchLabels:
+      app: theuserauth
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: theuserauth
+    spec:
+      containers:
+      - name: theuserapp
+        image: jespstpierre/chefappuserauth:0.0.4
+        env:
+          - name: JWT_KEY
+            valueFrom:
+              secretKeyRef:
+                name: jwt-secret
+                key: JWT_KEY
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+spec:
+  selector:
+    app: theuserauth
+  ports:
+  - name: user
+    protocol: TCP
+    port: 8081
+    targetPort: 8081
+
+
