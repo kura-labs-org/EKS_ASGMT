@@ -736,7 +736,7 @@ spec:
     spec:
       containers:
       - args:
-        - --cluster-name=your-mycluster-zc
+        - --cluster-name=mycluster01
         - --ingress-class=alb
         image: amazon/aws-alb-ingress-controller:v2.3.0
         livenessProbe:
