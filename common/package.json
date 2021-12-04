@@ -12,7 +12,7 @@
     "build": "npm run clean && npx tsc",
     "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish"
   },
-  "keywords": [],
+  "keywords": [],b
   "author": "",
   "license": "ISC",
   "devDependencies": {
