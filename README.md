@@ -15,7 +15,7 @@ This assignment is about deploying an **Nginx** application using **AWS EKS**.
 
 ![](eks-topology.PNG)
 
-## Precedure:
+## Procedure:
 
 The commands are for **Windows users**. If you are using **Mac** or **Linux** environment, replace the `^` by a `\`.
 
