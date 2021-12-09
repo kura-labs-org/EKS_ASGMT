@@ -6,6 +6,7 @@ Welcome to this deployment of my chef application, It was previously a monolith 
 
 - This is the visual representation of the app 
 
+![app_architecture](https://user-images.githubusercontent.com/60821705/145323013-e2415076-bdf0-4afc-b230-20a184be36ea.PNG)
 
 
 - This is the visual representation of the app in AWS environment
